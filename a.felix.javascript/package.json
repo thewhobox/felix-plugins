@@ -1,0 +1,59 @@
+{
+  "_args": [
+    [
+      "a.felix.javascript@1.0.2-i",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.javascript@1.0.2-i",
+  "_id": "a.felix.javascript@1.0.2-i",
+  "_inBundle": false,
+  "_integrity": "sha512-R+fgQa8VbBo230tH2zu9uHNqM4vZbDOb9VdhvdQ+ZKSfQ0/0XyL+7o2nGMsdF1v4OffZm20TG4bNJ/l9jX5XqQ==",
+  "_location": "/a.felix.javascript",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.javascript@1.0.2-i",
+    "name": "a.felix.javascript",
+    "escapedName": "a.felix.javascript",
+    "rawSpec": "1.0.2-i",
+    "saveSpec": null,
+    "fetchSpec": "1.0.2-i"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.javascript/-/a.felix.javascript-1.0.2-i.tgz",
+  "_shasum": "d28529ac6576d1f9d1ae4e627457c7d0ca7216b7",
+  "_spec": "1.0.2-i",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {
+    "child_process": "*",
+    "fs": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "request-promise-native": "*",
+    "socket.io-client": "*",
+    "vm2": "*",
+    "websocket": "*"
+  },
+  "deprecated": false,
+  "description": "Erstelle Skripte für automatisierung",
+  "keywords": [
+    "javascript",
+    "scripte",
+    "js",
+    "felix",
+    "assistant",
+    "smart"
+  ],
+  "license": "ISC",
+  "main": "main.js",
+  "name": "a.felix.javascript",
+  "version": "1.0.2-i"
+}

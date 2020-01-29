@@ -1,0 +1,48 @@
+{
+  "_args": [
+    [
+      "a.felix.denon@0.0.1-g",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.denon@0.0.1-g",
+  "_id": "a.felix.denon@0.0.1-g",
+  "_inBundle": false,
+  "_integrity": "sha512-fZvGarWfWNQOa2OGmMxrrGvoIdsdGrPojjPB3S4yi5VsyjYhgPWvmx4Ry8WwCf2rNAeSdeSgwbfBw+CTYGGCDQ==",
+  "_location": "/a.felix.denon",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.denon@0.0.1-g",
+    "name": "a.felix.denon",
+    "escapedName": "a.felix.denon",
+    "rawSpec": "0.0.1-g",
+    "saveSpec": null,
+    "fetchSpec": "0.0.1-g"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.denon/-/a.felix.denon-0.0.1-g.tgz",
+  "_shasum": "a723176ea36620eb3a88406ad6aa56fd66aee017",
+  "_spec": "0.0.1-g",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Steuere deinen Denon",
+  "keywords": [
+    "denon",
+    "felix",
+    "smart",
+    "assistant"
+  ],
+  "license": "MIT",
+  "main": "main.js",
+  "name": "a.felix.denon",
+  "version": "0.0.1-g"
+}

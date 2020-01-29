@@ -1,0 +1,59 @@
+{
+  "_args": [
+    [
+      "a.felix.lgtv@1.0.1-f",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.lgtv@1.0.1-f",
+  "_id": "a.felix.lgtv@1.0.1-f",
+  "_inBundle": false,
+  "_integrity": "sha512-RKliNVnKWzkDXBLOM9z8xQQb6eA6lcJ5CzEZTwMJCfPV9o7wU2iKQAygSbcINmyFey/1ZGxr70IShkkpXF66zw==",
+  "_location": "/a.felix.lgtv",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.lgtv@1.0.1-f",
+    "name": "a.felix.lgtv",
+    "escapedName": "a.felix.lgtv",
+    "rawSpec": "1.0.1-f",
+    "saveSpec": null,
+    "fetchSpec": "1.0.1-f"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.lgtv/-/a.felix.lgtv-1.0.1-f.tgz",
+  "_shasum": "077c7c369cf02c963dee100b73291f0e3e8b3ae1",
+  "_spec": "1.0.1-f",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {
+    "fs": "*",
+    "lgtv2": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "deprecated": false,
+  "description": "Steuere deinen Fernseher",
+  "keywords": [
+    "lg",
+    "tv",
+    "ltv",
+    "fernseher",
+    "smart",
+    "felix",
+    "assistant"
+  ],
+  "license": "ISC",
+  "main": "main.js",
+  "name": "a.felix.lgtv",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1-f"
+}

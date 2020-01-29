@@ -1,0 +1,17 @@
+{
+    "key": "telegram",
+    "name": "Telegram",
+    "keywords": [ "telegram", "chat", "nachricht", "app" ],
+    "description": "Sende oder empfange Nachrichten an einen Telegram Bot",
+    "settings": {
+        "pageobjects": {
+            "token": {
+                "title": "Token",
+                "placeholder": "f449wef5sdf66zt64f",
+                "type": "text",
+                "hint": "Gib hier den Token für den erstellten Bot ein.",
+                "value": ""
+            }
+        }
+    }
+}

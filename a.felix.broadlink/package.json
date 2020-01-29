@@ -1,0 +1,54 @@
+{
+  "_args": [
+    [
+      "a.felix.broadlink@0.0.2-a",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.broadlink@0.0.2-a",
+  "_id": "a.felix.broadlink@0.0.2-a",
+  "_inBundle": false,
+  "_integrity": "sha512-vO866iAuKdQY9EejsOmTlu59uKPaTHMm3DZfNgymp8WkOi8VEQdgKsEX95ANAKCE0ooXVqjUBsF820os4Ax97w==",
+  "_location": "/a.felix.broadlink",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.broadlink@0.0.2-a",
+    "name": "a.felix.broadlink",
+    "escapedName": "a.felix.broadlink",
+    "rawSpec": "0.0.2-a",
+    "saveSpec": null,
+    "fetchSpec": "0.0.2-a"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.broadlink/-/a.felix.broadlink-0.0.2-a.tgz",
+  "_shasum": "164a17e350a90187313cde44aab7711952bff303",
+  "_spec": "0.0.2-a",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {
+    "base64-js": "*",
+    "buffer-safe": "*",
+    "crypto": "*",
+    "dgram": "*",
+    "events": "*"
+  },
+  "deprecated": false,
+  "description": "Steuere deine Geräte per Infrarot",
+  "keywords": [
+    "broadlink",
+    "felix",
+    "infrarot",
+    "steuern"
+  ],
+  "license": "ISC",
+  "main": "main.js",
+  "name": "a.felix.broadlink",
+  "version": "0.0.2-a"
+}

@@ -1,0 +1,53 @@
+{
+  "_args": [
+    [
+      "a.felix.emby@1.0.3-c",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.emby@1.0.3-c",
+  "_id": "a.felix.emby@1.0.3-c",
+  "_inBundle": false,
+  "_integrity": "sha512-Lxv4AnOPRVjuewtxqhzOzTwUENrrUuWNzGxlfSnMn4dH0kkMPS2IsgDMF//StDu+ZAL0LaZobnKZdA8xXUBVWA==",
+  "_location": "/a.felix.emby",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.emby@1.0.3-c",
+    "name": "a.felix.emby",
+    "escapedName": "a.felix.emby",
+    "rawSpec": "1.0.3-c",
+    "saveSpec": null,
+    "fetchSpec": "1.0.3-c"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.emby/-/a.felix.emby-1.0.3-c.tgz",
+  "_shasum": "1cd920a3db0f78163f2e7abe04d03fad971369fd",
+  "_spec": "1.0.3-c",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "request-promise-native": "*",
+    "websocket": "*"
+  },
+  "deprecated": false,
+  "description": "Kontrolliere deinen Emby-Server",
+  "keywords": [
+    "felix",
+    "emby",
+    "smart",
+    "assistant"
+  ],
+  "license": "MIT",
+  "main": "main.js",
+  "name": "a.felix.emby",
+  "version": "1.0.3-c"
+}

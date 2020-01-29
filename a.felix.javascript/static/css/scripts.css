@@ -1,0 +1,51 @@
+nav.ribbon-menu {
+    height: 126px;
+}
+
+nav.ribbon-menu > div {
+    height: calc(100% - 25px);
+}
+
+nav.ribbon-menu > div > div {
+    height: 100%
+}
+
+.editor-view {
+    height: calc(100% - 126px);
+}
+
+.cell {
+    padding: 0 !important;
+}
+
+#container {
+    position: absolute;
+}
+
+#container > div,
+.monaco-editor,
+.overflow-guard {
+    position: absolute !important;
+}
+
+body {
+    overflow: hidden;
+}
+
+#errorGroupList {
+    width: calc(100% - 15px);
+    border: 0;
+}
+
+.ribbon-icon-button.active {
+    border: 0 !important;
+    background-color: transparent !important;
+}
+
+.button-group .active {
+    color: black !important;
+}
+
+#scriptsList li.active {
+    background-color: #97ddff;
+}

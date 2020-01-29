@@ -1,0 +1,51 @@
+{
+    "key": "emby",
+    "name": "Emby",
+    "keywords": [ "emby", "server", "video" ],
+    "description": "Steuere deinen Emby Server",
+    "settings": {
+        "pageobjects": {
+            "address": {
+                "title": "IP Adresse",
+                "placeholder": "192.168.0.xx:8096",
+                "type": "text",
+                "hint": "Gib hier die IP vom Emby-Server ein. (Inklusive Port falls nicht 80)",
+                "value": ""
+            },
+            "apikey": {
+                "title": "API Key",
+                "placeholder": "#######",
+                "type": "text",
+                "hint": "Zu finden im Dashbord unter Erweitert und dann Sicherheit.",
+                "value": ""
+            },
+            "timeout": {
+                "title": "Verzögerung für Pause",
+                "placeholder": "500",
+                "type": "number",
+                "hint": "Nötig wenn mehrere Folgen hintereinander gespielt werden.",
+                "unit": "ms",
+                "value": 500
+            },
+            "deviceIds": {
+                "title": "Geräte ignorieren",
+                "placeholder": "#######",
+                "type": "text",
+                "hint": "Eingetragene IDs werden ignoriert. (Mit Komma seperieren)",
+                "value": ""
+            },
+            "isSSL": {
+                "title": "Verbindung ist verschlüsselt?",
+                "type": "checkbox",
+                "hint": "IP unter HTTPS zu erreichen?",
+                "value": false
+            }
+        },
+        "pagebuttons": [
+            {
+                "id": "getServer",
+                "title": "Server finden"
+            }
+        ]
+    }
+}

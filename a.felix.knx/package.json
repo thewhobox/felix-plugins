@@ -1,0 +1,44 @@
+{
+  "_from": "a.felix.knx@0.0.1-e",
+  "_id": "a.felix.knx@0.0.1-e",
+  "_inBundle": false,
+  "_integrity": "sha512-rp3bkHn/Pfz4ERAZ8KIN31+Pho3pCzC/V0kfYbhreN27WVraKPK+DXMPIVNFicKeMdKot3wdLHr6X+6/S+HStQ==",
+  "_location": "/a.felix.knx",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.knx@0.0.1-e",
+    "name": "a.felix.knx",
+    "escapedName": "a.felix.knx",
+    "rawSpec": "0.0.1-e",
+    "saveSpec": null,
+    "fetchSpec": "0.0.1-e"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.knx/-/a.felix.knx-0.0.1-e.tgz",
+  "_shasum": "564dabd5797aed887936011d7680ffcab5cc4fcc",
+  "_spec": "a.felix.knx@0.0.1-e",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "knx": "*"
+  },
+  "deprecated": false,
+  "description": "Steuere deine KNX Installation",
+  "keywords": [
+    "knx",
+    "felix",
+    "steuern"
+  ],
+  "license": "ISC",
+  "main": "main.js",
+  "name": "a.felix.knx",
+  "version": "0.0.1-e"
+}

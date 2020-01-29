@@ -1,0 +1,25 @@
+{
+    "key": "lgtv",
+    "name": "LG Web OS TV",
+    "keywords": [ "lg", "fernseher", "lgtv", "tv", "webos", "web os" ],
+    "description": "Steure deinen LG TV",
+    "settings": {
+        "pageobjects": {
+            "ip": {
+                "title": "Fernseher",
+                "placeholder": "192.168.0.xx",
+                "type": "text",
+                "hint": "Die IP deines Fernsehers",
+                "value": ""
+            },
+            "pollTime": {
+                "title": "Poll-Interval",
+                "placeholder": "10000",
+                "type": "number",
+                "hint": "Intervall in denen die States aktualisiert werden sollen.",
+                "unit": "ms",
+                "value": 10000
+            }
+        }
+    }
+}

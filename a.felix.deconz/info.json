@@ -1,0 +1,73 @@
+{
+    "key": "deconz",
+    "name": "Deconz",
+    "keywords": [ "deconz", "licht", "zigbee", "sensoren" ],
+    "description": "Steuere deine Zigbee Geräte über Deconz",
+    "settings": {
+        "pageobjects": {
+            "ip": {
+                "title": "IP Adresse",
+                "placeholder": "192.168.0.xx",
+                "type": "text",
+                "hint": "Gib hier die IP vom Emby-Server ein. (Inklusive Port falls nicht 80)",
+                "value": ""
+            },
+            "username": {
+                "title": "Username",
+                "placeholder": "#######",
+                "type": "text",
+                "hint": "Bekannten User eingeben oder unten einen neuen erstellen.",
+                "value": ""
+            },
+            "checkgroup": {
+                "title": "Suche Gruppen",
+                "type": "checkbox",
+                "hint": "Gibt an ob nach Gruppen gesucht werden soll.",
+                "value": false
+            },
+            "checklight": {
+                "title": "Suche Leuchten",
+                "type": "checkbox",
+                "hint": "Gibt an ob nach Leuchten gesucht werden soll.",
+                "value": true
+            },
+            "checksensor": {
+                "title": "Suche Sensoren",
+                "type": "checkbox",
+                "hint": "Gibt an ob nach Sensoren gesucht werden soll.",
+                "value": false
+            },
+            "pullInterval": {
+                "title": "Pull Intervall",
+                "type": "number",
+                "hint": "Intervall in dem die States geholte werden sollen. (Nur wenn kein Websocket verfügbar - z.B. HUE)",
+                "unit": "ms",
+                "value": false
+            }
+        },
+        "pagebuttons": [
+            {
+                "id": "getGateway",
+                "title": "Automatisch ausfüllen"
+            }
+        ]
+    },
+    "tabs": [{ 
+        "key": "search", 
+        "icon": "search", 
+        "title": "Suchen" 
+    }],
+    "channels": [{
+        "id": "Light",
+        "name": "",
+        "parent": ""
+    },{
+        "id": "Group",
+        "name": "",
+        "parent": ""
+    },{
+        "id": "Sensor",
+        "name": "",
+        "parent": ""
+    }]
+}

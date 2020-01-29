@@ -1,0 +1,52 @@
+{
+    "key": "knx",
+    "name": "Knx",
+    "keywords": [ "knx", "smart", "eib", "steuern" ],
+    "description": "Steuere deine KNX Installation",
+    "settings": {
+        "pageobjects": {
+            "ip": {
+                "title": "IP Adresse",
+                "placeholder": "192.168.0.xx",
+                "type": "text",
+                "hint": "Die IP des Gateways",
+                "value": ""
+            },
+            "port": {
+                "title": "Port",
+                "placeholder": "3671",
+                "type": "number",
+                "hint": "Der Port des Gateways",
+                "value": 3671
+            },
+            "pha": {
+                "title": "Physikalische Adresse",
+                "placeholder": "1.1.255",
+                "type": "text",
+                "hint": "Gibt die physikalische Adresse an.",
+                "value": "1.1.255"
+            }
+        },
+        "pagebuttons": [
+            {
+                "id": "getGateway",
+                "title": "Finde Gerät"
+            }
+        ]
+    },
+    "tabs": [
+      {
+        "key": "devices",
+        "title": "Geräte"
+      },
+      {
+        "key": "settings2",
+        "title": "Erweitert"
+      }
+    ],
+    "viewJsFiles": {
+        "device": [
+          "/static/knx/js/dpts.js"
+        ]
+    }
+}

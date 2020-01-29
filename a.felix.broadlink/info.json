@@ -1,0 +1,30 @@
+{
+    "key": "broadlink",
+    "name": "Broadlink",
+    "keywords": [ "broadlink", "infrarot", "fernbedienung", "steuern" ],
+    "description": "Steuere deine Geräte per Infrarot",
+    "settings": {
+        "pageobjects": {
+            "ip": {
+                "title": "IP Adresse",
+                "placeholder": "192.168.0.xx",
+                "type": "text",
+                "hint": "Gib hier die IP ein. (Inklusive Port falls nicht 80)",
+                "value": ""
+            }
+        },
+        "pagebuttons": [
+            {
+                "id": "getGateway",
+                "title": "Finde Gerät"
+            }
+        ]
+    },
+    "tabs": [
+      {
+        "key": "code",
+        "icon": "broadcast",
+        "title": "Codes"
+      }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+  "_args": [
+    [
+      "a.felix.telegram@0.0.1-e",
+      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+    ]
+  ],
+  "_development": true,
+  "_from": "a.felix.telegram@0.0.1-e",
+  "_id": "a.felix.telegram@0.0.1-e",
+  "_inBundle": false,
+  "_integrity": "sha512-TLAbd+lPIjQqoAuG+p0pzcZkmZGqzwlBVqvw6SoqQRwypIYXK/N0H4NDzo9YVgQd7xoyHT7eXOqMDDBI5gZL9Q==",
+  "_location": "/a.felix.telegram",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "a.felix.telegram@0.0.1-e",
+    "name": "a.felix.telegram",
+    "escapedName": "a.felix.telegram",
+    "rawSpec": "0.0.1-e",
+    "saveSpec": null,
+    "fetchSpec": "0.0.1-e"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/a.felix.telegram/-/a.felix.telegram-0.0.1-e.tgz",
+  "_spec": "0.0.1-e",
+  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "author": {
+    "name": "M. Gerst"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "fs": "*",
+    "node-telegram-bot-api": "*",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "description": "Sende oder empfange Nachrichten an einen Telegram Bot",
+  "keywords": [
+    "telegram",
+    "smart",
+    "felix",
+    "assistant"
+  ],
+  "license": "ISC",
+  "main": "main.js",
+  "name": "a.felix.telegram",
+  "version": "0.0.1-e"
+}

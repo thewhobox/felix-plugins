@@ -1,0 +1,28 @@
+{
+    "key": "javascript",
+    "name": "Javascript",
+    "keywords": [ "javascript", "js", "skripte", "automatisierung", "steuern" ],
+    "description": "Erstelle Skripte um automatisierte Aktionen zu erstellen",
+    "settings": {
+        "pageobjects": {
+            "modules": {
+                "title": "Module",
+                "placeholder": "request,schedule",
+                "type": "tags",
+                "hint": "Leertaste oder Komma für weitere Module.\nGib hier Module an, die in Skripten verwendet werden.",
+                "value": ""
+            }
+        }
+    },
+    "maintabs": [{
+        "key": "script%instance%",
+        "title": "Skripte %instance%",
+        "url": "/adapters/%instance%/scripts"
+    }],
+    "viewJsFiles": {
+        "edit-js": ["/static/javascript/js/metro.min.js", "/static/javascript/js/require.js", "/static/javascript/monaco/min/vs/loader.js", "/static/javascript/monaco/min/vs/editor/editor.main.js"]
+    },
+    "viewCssFiles": {
+        "edit-js": ["/static/javascript/css/ribbon.css", "/static/javascript/monaco/min/vs/editor/editor.main.css"]
+    }
+}

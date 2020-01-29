@@ -1,0 +1,37 @@
+{
+    "key": "denon",
+    "name": "Denon",
+    "keywords": [ "denon", "receiver", "musik", "verstärker"],
+    "description": "Steuere deinen Denon",
+    "settings": {
+        "pageobjects": {
+            "ip": {
+                "title": "IP Adresse",
+                "placeholder": "192.168.0.xx",
+                "type": "text",
+                "hint": "Gib hier die IP vom Denon ein.",
+                "value": ""
+            },
+            "pollInterval": {
+                "title": "Intervall zwischen Befehlen",
+                "placeholder": "7000",
+                "type": "number",
+                "unit": "ms",
+                "value": 7000
+            },
+            "requestInterval": {
+                "title": "Intervall zwischen Befehlen",
+                "placeholder": "100",
+                "type": "number",
+                "unit": "ms",
+                "value": 100
+            }
+        },
+        "pagebuttons": [
+            {
+                "id": "getDenon",
+                "title": "Suchen"
+            }
+        ]
+    }
+}
