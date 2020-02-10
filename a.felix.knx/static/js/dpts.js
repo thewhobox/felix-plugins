@@ -18,6 +18,7 @@ var dpts = {
             3: { name: "1.003 Freigegeben", func: "enabled", role: "enabled" },
             4: { name: "1.004 Anstieg", func: "ramp", role: "ramp" },
             5: { name: "1.005 Alarm", func: "alarm", role: "state.alarm" },
+            8: { name: "1.008 Auf/Ab", func: "direction", role: "rollo.direction", type: "direction" },
             10: { name: "1.010 Start/Stop", func: "stop", role: "state.stop" },
             19: { name: "1.019 Fenster/Tür", func: "state.door", role: "state" },
             20: { name: "1.020 Szene", func: "scene", role: "scene" },

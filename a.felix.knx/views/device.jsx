@@ -22,7 +22,6 @@ class Device extends React.Component {
             var state = {
                 id: this.device.id + "." + props.req.body.id,
                 name: props.req.body.name, 
-                type: dpts.sub[props.req.body.dp_main][props.req.body.dp_sub].type || dpts.sub[props.req.body.dp_main].default.type, 
                 role: props.req.body.role,
                 read: true,
                 write: true,
@@ -34,6 +33,12 @@ class Device extends React.Component {
                 dpt
             }
 
+            if(dpts.sub[props.req.body.dp_main][props.req.body.dp_sub].type != undefined){
+                state.type = dpts.sub[props.req.body.dp_main][props.req.body.dp_sub];
+            } else {
+                state.type = dpts.sub[props.req.body.dp_main].default.type;
+            }
+//TODO send to main to use it instantly
             this.dmanager.addState(state);
         }
     }
@@ -86,7 +91,7 @@ class Device extends React.Component {
                             </div>
                             <div className="row">
                                 <div className="col s2"><label htmlFor='state'>Statusadresse:</label></div>
-                                <div className="col s10"><input id="state" name='state' type='text' autoComplete='off' placeholder="1/0/3" />
+                                <div className="col s10"><input id="status" name='status' type='text' autoComplete='off' placeholder="1/0/3" />
                                 <div><span className="help-text">Leer lassen, wenn keine Statusadresse vorhanden.</span></div></div>
                             </div>
                         </div>

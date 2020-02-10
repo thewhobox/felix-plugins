@@ -26,7 +26,7 @@ function stop() {
 
 function changed(data) {
     if (data.ack)
-    return;
+        return;
 
     dpts[data.id].write(data.value);
 
@@ -48,9 +48,6 @@ function tryConnect() {
         loadDPTs();
         startSettings2();
     });
-    // connection.on("disconnected", () => {
-    //     adapter.log.error("disconnected....");
-    // });
 
     connection.on("GroupValue_Write", knx_event);
 
@@ -80,19 +77,28 @@ function startSettings2() {
 
 function loadDPTs() {
     var states = adapter.getAllStates();
-    adapter.log.info(JSON.stringify(states))
+    adapter.log.debug(JSON.stringify(states));
 
     states.forEach((state) => {
         if(state.id == "connection") return;
 
+        let xy = state;
         let dpt = new knx.Datapoint({ga: state.group, dpt: state.dpt}, connection);
-        dpt.on("change", (oldVal, newVal) => {
-            adapter.setState(state.id, newVal, true);
-        });
-        dpt.read((source, value) => {
-            adapter.log.debug("Init value " + state.group + ": " + value);
-            adapter.setState(state.id, value, true);
-        });
+        
+        if(xy.status != undefined) {
+            if(xy.status == xy.group) {
+                dpt.on("change", (oldVal, newVal) => {
+                    adapter.log.debug("Changed: " + xy.id + " to " + newVal);
+                    adapter.setState(xy.id, newVal, true);
+                });
+            } else {
+                let dptstatus = new knx.Datapoint({ga: state.status, dpt: state.dpt}, connection);
+                dptstatus.on("change", (oldVal, newVal) => {
+                    adapter.log.debug("Changed: " + xy.id + " to " + newVal);
+                    adapter.setState(xy.id, newVal, true);
+                });
+            }
+        }
         dpts[state.id] = dpt;
     })
 }
