@@ -34,7 +34,7 @@ class Device extends React.Component {
             }
 
             if(dpts.sub[props.req.body.dp_main][props.req.body.dp_sub].type != undefined){
-                state.type = dpts.sub[props.req.body.dp_main][props.req.body.dp_sub];
+                state.type = dpts.sub[props.req.body.dp_main][props.req.body.dp_sub].type;
             } else {
                 state.type = dpts.sub[props.req.body.dp_main].default.type;
             }
