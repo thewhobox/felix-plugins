@@ -40,5 +40,5 @@
   "license": "ISC",
   "main": "main.js",
   "name": "a.felix.knx",
-  "version": "0.0.1-f"
+  "version": "0.0.2"
 }
