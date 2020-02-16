@@ -1,0 +1,40 @@
+{
+    "listening": {
+        "single": [
+            {
+                "type": "command",
+                "command": { "bri": 255, "hue": 120, "on": true, "transitiontime": 5 }
+            },
+            {
+                "type": "wait",
+                "time": 500
+            }
+        ],
+        "loop": [
+            {
+                "type": "command",
+                "command": { "bri": 120, "transitiontime": 5 },
+                "wait": true
+            },
+            {
+                "type": "command",
+                "command": { "bri": 255, "transitiontime": 5 },
+                "wait": true
+            }
+        ]
+    },
+    "speaking": {
+        "loop": [
+            {
+                "type": "command",
+                "command": { "hue": 80, "bri": 120, "transitiontime": 5 },
+                "wait": true
+            },
+            {
+                "type": "command",
+                "command": { "bri": 255, "transitiontime": 5 },
+                "wait": true
+            }
+        ]
+    }
+}

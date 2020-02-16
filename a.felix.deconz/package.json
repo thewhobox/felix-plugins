@@ -1,38 +1,41 @@
 {
   "_args": [
     [
-      "a.felix.deconz@1.0.2-k",
-      "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant"
+      "a.felix.deconz@1.0.2-d",
+      "C:\\Users\\mikeg\\source\\repos\\felix-assistant"
     ]
   ],
   "_development": true,
-  "_from": "a.felix.deconz@1.0.2-k",
-  "_id": "a.felix.deconz@1.0.2-k",
+  "_from": "a.felix.deconz@1.0.3",
+  "_id": "a.felix.deconz@1.0.3",
   "_inBundle": false,
-  "_integrity": "sha512-Hs1F59OLVEjRwZ9vpgsq6C8UG+B66FsKnmhk4bucYG+MkPBAQCY8HK+VrG57O0Gyf2CsPLbR8Aq0CCkW5J097A==",
+  "_integrity": "sha512-+v3uVBLUGxNlsKAfZ0n/ejdGCMX7DIbMcXw7Gl2ejGTaNAI287KEaIc+MVgJTPRWOwj54N3g3nM88tBZv9VtQQ==",
   "_location": "/a.felix.deconz",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "a.felix.deconz@1.0.2-k",
+    "raw": "a.felix.deconz@1.0.3",
     "name": "a.felix.deconz",
     "escapedName": "a.felix.deconz",
-    "rawSpec": "1.0.2-k",
+    "rawSpec": "1.0.3",
     "saveSpec": null,
-    "fetchSpec": "1.0.2-k"
+    "fetchSpec": "1.0.3"
   },
   "_requiredBy": [
-    "#DEV:/"
+    "#DEV:/",
+    "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/a.felix.deconz/-/a.felix.deconz-1.0.2-k.tgz",
-  "_shasum": "6317c8aeeb1d7ecd30f7544c317acaeed7a57aca",
-  "_spec": "1.0.2-k",
-  "_where": "C:\\Users\\mikeg\\Desktop\\felix\\felix-assistant",
+  "_resolved": "https://registry.npmjs.org/a.felix.deconz/-/a.felix.deconz-1.0.3.tgz",
+  "_shasum": "d4d8d3292046d286816fa135e9682e6424e05128",
+  "_spec": "a.felix.deconz@1.0.3",
+  "_where": "C:\\Users\\mikeg\\source\\repos\\felix-assistant",
   "author": {
     "name": "M. Gerst"
   },
+  "bundleDependencies": false,
   "dependencies": {
+    "fs": "*",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "request-promise-native": "*",
@@ -49,5 +52,5 @@
   "license": "ISC",
   "main": "main.js",
   "name": "a.felix.deconz",
-  "version": "1.0.2-k"
+  "version": "1.0.3"
 }

@@ -3,6 +3,7 @@
     "name": "Deconz",
     "keywords": [ "deconz", "licht", "zigbee", "sensoren" ],
     "description": "Steuere deine Zigbee Geräte über Deconz",
+    "useSpeechLight": true,
     "settings": {
         "pageobjects": {
             "ip": {
@@ -19,30 +20,12 @@
                 "hint": "Bekannten User eingeben oder unten einen neuen erstellen.",
                 "value": ""
             },
-            "checkgroup": {
-                "title": "Suche Gruppen",
-                "type": "checkbox",
-                "hint": "Gibt an ob nach Gruppen gesucht werden soll.",
-                "value": false
-            },
-            "checklight": {
-                "title": "Suche Leuchten",
-                "type": "checkbox",
-                "hint": "Gibt an ob nach Leuchten gesucht werden soll.",
-                "value": true
-            },
-            "checksensor": {
-                "title": "Suche Sensoren",
-                "type": "checkbox",
-                "hint": "Gibt an ob nach Sensoren gesucht werden soll.",
-                "value": false
-            },
             "pullInterval": {
                 "title": "Pull Intervall",
                 "type": "number",
                 "hint": "Intervall in dem die States geholte werden sollen. (Nur wenn kein Websocket verfügbar - z.B. HUE)",
                 "unit": "ms",
-                "value": false
+                "value": 10000
             }
         },
         "pagebuttons": [

@@ -1,6 +1,5 @@
 const React = require('react');
 var dmanage = require('./../../../manager/devicemanage');
-var helper = require("./searchhelper");
 
 class Index extends React.Component {
 
@@ -10,14 +9,6 @@ class Index extends React.Component {
 		this.instance = this.props.instance;
 		this.devices = new dmanage(this.instance.key, true);
 		this.statusCode = 200;
-
-		if (props.method == "post") {
-			this.props.req.body.forEach(item => {
-				helper(item, this.devices);
-			});
-		}
-
-		props.res.setHeader('Access-Control-Allow-Origin', '*');
 	}
 
 	render() {
@@ -27,12 +18,9 @@ class Index extends React.Component {
 
 		var groups = [];
 
-		if (this.instance.settings.checklight)
-			groups.push({ id: "devicesL", title: "Leuchten" });
-		if (this.instance.settings.checkgroup)
-			groups.push({ id: "devicesG", title: "Gruppen" });
-		if (this.instance.settings.checksensor)
-			groups.push({ id: "devicesS", title: "Sensoren" });
+		groups.push({ id: "devicesL", title: "Leuchten" });
+		groups.push({ id: "devicesG", title: "Gruppen" });
+		groups.push({ id: "devicesS", title: "Sensoren" });
 
 		return <div>
 			<a id="searchNow" className="btn-flat">Suchen</a>
@@ -49,7 +37,11 @@ class GroupItem extends React.Component {
 
 	render() {
 		return (<div>
-			<h3>{this.props.item.title}</h3>
+			<h3>
+				{this.props.item.title}
+				<a style={{marginLeft: "10px"}} className="btn-floating red" data-group={this.props.item.id}><i className="material-icons">search</i></a>
+			</h3>
+			
 			<table id={this.props.item.id} className="table striped">
 				<thead>
 					<tr>

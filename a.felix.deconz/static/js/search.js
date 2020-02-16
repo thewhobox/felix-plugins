@@ -1,3 +1,5 @@
+var instanceKey = $("#instance").val();
+var socket = io("http://" + window.location.hostname +":3000");
 var settings = null;
 var searchCount = 0;
 var finCount = 0;
@@ -6,8 +8,6 @@ var notsaved = false;
 $(document).ready(() => {
     if ($("#settings").length != 0)
         settings = JSON.parse($("#settings").val());
-
-    alert("Hallo");
 });
 
 
@@ -20,9 +20,7 @@ $("#save").click(() => {
             return;
 
         var topele = $(item).parent().parent().parent();
-        console.log(topele);
         var json = topele.attr("data-json");
-        console.log(decodeURI(json));
         var data = JSON.parse(decodeURI(json));
         data.name = $("span[data-type=name]", topele).html();
         data.supports = data.supports.arr;
@@ -30,6 +28,7 @@ $("#save").click(() => {
         if (data.id < 10)
             data.id = "0" + data.id;
         data.id = data.type + "." + data.id;
+        data.hasColor = data.hascolor;
 
         if (data.type != "Sensor") {
             delete data.config,
@@ -49,134 +48,149 @@ $("#save").click(() => {
         devices.push(data);
     });
 
-    $.post({
-        url: url,
-        data: JSON.stringify(devices),
-        contentType: "application/json; charset=utf-8"
-    })
-        .done((data) => {
-            alert("Fertig");
-        });
+    socket.emit("message", { to: instanceKey, cmd: "saveDevices", value: devices}, function(result) {
+        alert("Geräte wurden gespeichert.")
+    }); 
+});
 
+$("a[data-group=devicesL").click(() => {
+    if (!checkSettings()) return;
+    searchLights();
+});
+
+$("a[data-group=devicesG").click(() => {
+    if (!checkSettings()) return;
+    searchGroups();
+});
+
+$("a[data-group=devicesS").click(() => {
+    if (!checkSettings()) return;
+    searchSensors();
 });
 
 $("#searchNow").click(() => {
-    if (settings.username == "") {
-        alert("Bitte gib in den Einstellungen erst einen Username ein.", "red white-text");
-        return;
-    }
-
-    if (!settings.checkgroup && !settings.checklight && !settings.checksensor) {
-        alert("Bitte wähle mindestens ein Gerät aus (Gruppe, Leuchte oder Sensor)", "red white-text");
-        return;
-    }
-    $("#devicesG tbody").html("");
-    $("#devicesL tbody").html("");
-    $("#devicesS tbody").html("");
-
-    var url = "";
-
-    if (settings.checkgroup) {
-        searchCount++;
-        url = "http://" + settings.ip + "/api/" + settings.username + "/groups";
-        console.log(url);
-
-       
-        $.ajax(url)
-            .done((dataG) => {
-                url = "http://" + settings.ip + "/api/" + settings.username + "/lights";
-                $.ajax(url)
-                    .done((dataL) => {
-                        $.each(dataG, (index, item) => {
-                            let regex = new RegExp("helper[0-9]+ for group [0-9]+");
-                            if (regex.test(item.name)) return;
-                            var supp = [];
-
-                            $.each(item.lights, (index, item2) => {
-                                var supports = getSupports(dataL[item2], "L");
-                                if (supports.text == "Nicht unterstützt") return;
-
-                                $.each(supports.arr, (index, itemSup) => {
-                                    if (supp.indexOf(itemSup) == -1) supp.push(itemSup);
-                                });
-                            });
-                            if (supp.length == 0) item.supports = { arr: supp, text: "Nicht unterstützt" }
-                            else item.supports = { arr: supp, text: supp.join(", ") };
-
-                            item.type = "Group";
-                            addLightOrGroup(item, "G");
-                        });
-                    })
-                    .fail((err) => {
-                        alert("Es trat ein Fehler auf 1", "red white-text");
-                    })
-                    .always(() => {
-                        finCount++;
-                        reloadActionClicks();
-                    });
-
-
-            })
-            .fail((err, code, x) => {
-                alert("Es trat ein Fehler auf 2", "red white-text");
-            });
-    }
-
-    if (settings.checklight) {
-        searchCount++;
-        url = "http://" + settings.ip + "/api/" + settings.username + "/lights";
-
-        $.ajax(url)
-            .done((data) => {
-                $.each(data, (index, item) => {
-                    item.id = index;
-                    item.supports = getSupports(item, "L");
-                    item.type = "Light";
-                    addLightOrGroup(item);
-                });
-            })
-            .fail((err) => {
-                alert("Es trat ein Fehler auf 3", "red white-text");
-            })
-            .always(() => {
-                finCount++;
-                reloadActionClicks();
-            });
-    }
-
-    if (settings.checksensor) {
-        searchCount++;
-        url = "http://" + settings.ip + "/api/" + settings.username + "/sensors";
-
-        $.ajax(url)
-            .done((data) => {
-                $.each(data, (index, item) => {
-                    if (item.name.indexOf("CLIP-Sensor TOOGLE") !== -1)
-                        return;
-
-                    item.id = index;
-                    item.supports = getSupports(item, "S");
-                    item.type = "Sensor";
-                    addLightOrGroup(item, "S");
-                });
-                reloadActionClicks();
-            })
-            .fail((err) => {
-                alert("Es trat ein Fehler auf 4", "red white-text");
-            })
-            .always(() => {
-                finCount++;
-                reloadActionClicks();
-            });
-    }
+    if (!checkSettings()) return;
+    searchLights();
+    searchGroups();
+    searchSensors();
 });
 
+function checkSettings() {
+    if (settings.username == "") {
+        alert("Bitte gib in den Einstellungen erst einen Username ein.", "red white-text");
+        return false;
+    }
 
-function reloadActionClicks() {
-    if (finCount != searchCount)
-        return;
+    return true;
+}
 
-    $("a[data-type=info]").click((ele, b, c) => {
+function searchLights() {
+    $("#devicesL tbody").html("");
+
+
+
+    /*let xdata = {"1":{"etag":"6569fde455b9a6e02f57e112a038fd93","hascolor":false,"manufacturername":"Philips","modelid":"LWB010","name":"Decke","state":{"alert":"none","bri":254,"on":true,"reachable":true},"swversion":"1.46.13_r26312","type":"Dimmable light","uniqueid":"00:17:88:01:03:0d:a7:cf-0b"},"2":{"ctmax":454,"ctmin":250,"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":true,"manufacturername":"IKEA of Sweden","modelid":"TRADFRI bulb GU10 WS 400lm","name":"Flur L","state":{"alert":"none","bri":254,"colormode":"ct","ct":370,"on":true,"reachable":false},"swversion":"1.2.217","type":"Color temperature light","uniqueid":"90:fd:9f:ff:fe:78:c8:6a-01"},"3":{"ctmax":454,"ctmin":153,"etag":"065a6f983ac0d845270a1100c49ef505","hascolor":true,"manufacturername":"Philips","modelid":"LTW013","name":"Arbeit L","state":{"alert":"none","bri":254,"colormode":"ct","ct":366,"on":false,"reachable":true},"swversion":"1.46.13_r26312","type":"Color temperature light","uniqueid":"00:17:88:01:02:f0:e8:3c-0b"},"4":{"ctmax":454,"ctmin":153,"etag":"065a6f983ac0d845270a1100c49ef505","hascolor":true,"manufacturername":"Philips","modelid":"LTW013","name":"Arbeit R","state":{"alert":"none","bri":254,"colormode":"ct","ct":366,"on":false,"reachable":true},"swversion":"1.46.13_r26312","type":"Color temperature light","uniqueid":"00:17:88:01:02:f0:e7:c8-0b"},"5":{"ctmax":500,"ctmin":153,"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":true,"manufacturername":"dresden elektronik","modelid":"FLS-PP3","name":"Hintergrund","powerup":7,"state":{"alert":"none","bri":178,"colormode":"hs","ct":500,"effect":"none","hue":5376,"on":false,"reachable":true,"sat":208,"xy":[0.5372,0.3762]},"swversion":"0214.201000EB","type":"Extended color light","uniqueid":"00:21:2e:ff:ff:02:7f:4e-0a"},"6":{"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":false,"manufacturername":"dresden elektronik","modelid":"FLS-PP3 White","name":"Light 6","powerup":7,"state":{"alert":"none","bri":178,"on":false,"reachable":true},"swversion":"0214.201000EB","type":"Dimmable light","uniqueid":"00:21:2e:ff:ff:02:7f:4e-0b"},"7":{"ctmax":454,"ctmin":153,"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":true,"manufacturername":"Philips","modelid":"LTW013","name":"Küche R","state":{"alert":"none","bri":254,"colormode":"ct","ct":366,"on":false,"reachable":true},"swversion":"1.46.13_r26312","type":"Color temperature light","uniqueid":"00:17:88:01:03:ae:13:b9-0b"},"8":{"ctmax":454,"ctmin":153,"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":true,"manufacturername":"Philips","modelid":"LTW013","name":"Küche L","state":{"alert":"none","bri":254,"colormode":"ct","ct":366,"on":false,"reachable":true},"swversion":"1.46.13_r26312","type":"Color temperature light","uniqueid":"00:17:88:01:03:ae:13:7b-0b"},"9":{"ctmax":454,"ctmin":250,"etag":"06ce59f95366265519c2c3d0bc5632e4","hascolor":true,"manufacturername":"IKEA of Sweden","modelid":"TRADFRI bulb GU10 WS 400lm","name":"Flur R","state":{"alert":"none","bri":233,"colormode":"ct","ct":370,"on":true,"reachable":false},"swversion":"1.2.217","type":"Color temperature light","uniqueid":"90:fd:9f:ff:fe:83:63:bf-01"}}
+
+    $.each(xdata, (index, item) => {
+        item.id = index;
+        item.supports = getSupports(item, "L");
+        item.type = "Light";
+        addLightOrGroup(item);
+    });
+*/
+
+    $.ajax("http://" + settings.ip + "/api/" + settings.username + "/lights")
+        .done((data) => {
+            $.each(data, (index, item) => {
+                item.id = index;
+                item.supports = getSupports(item, "L");
+                item.type = "Light";
+                addLightOrGroup(item);
+            });
+        })
+        .fail((err) => {
+            alert("Es trat ein Fehler auf 3\r\n", "red white-text");
+            console.log("http://" + settings.ip + "/api/" + settings.username + "/lights");
+            console.log(err);
+        })
+        .always(() => {
+            reloadActionClicks("L");
+        });
+}
+
+function searchGroups() {
+    $("#devicesG tbody").html("");
+
+    $.ajax("http://" + settings.ip + "/api/" + settings.username + "/groups")
+        .done((dataG) => {
+            $.ajax("http://" + settings.ip + "/api/" + settings.username + "/lights")
+                .done((dataL) => {
+                    $.each(dataG, (index, item) => {
+                        let regex = new RegExp("helper[0-9]+ for group [0-9]+");
+                        if (regex.test(item.name)) return;
+                        var supp = [];
+
+                        $.each(item.lights, (index, item2) => {
+                            var supports = getSupports(dataL[item2], "L");
+                            if (supports.text == "Nicht unterstützt") return;
+
+                            $.each(supports.arr, (index, itemSup) => {
+                                if (supp.indexOf(itemSup) == -1) supp.push(itemSup);
+                            });
+                        });
+                        if (supp.length == 0) item.supports = { arr: supp, text: "Nicht unterstützt" }
+                        else item.supports = { arr: supp, text: supp.join(", ") };
+
+                        item.type = "Group";
+                        addLightOrGroup(item, "G");
+                    });
+                })
+                .fail((err) => {
+                    alert("Es trat ein Fehler auf 1", "red white-text");
+                })
+                .always(() => {
+                    finCount++;
+                    reloadActionClicks("G");
+                });
+
+
+        })
+        .fail((err, code, x) => {
+            alert("Es trat ein Fehler auf 2", "red white-text");
+        });
+}
+
+function searchSensors() {
+    $("#devicesS tbody").html("");
+
+    $.ajax("http://" + settings.ip + "/api/" + settings.username + "/sensors")
+        .done((data) => {
+            $.each(data, (index, item) => {
+                if (item.name.indexOf("CLIP-Sensor TOOGLE") !== -1)
+                    return;
+
+                item.id = index;
+                item.supports = getSupports(item, "S");
+                item.type = "Sensor";
+                addLightOrGroup(item, "S");
+            });
+            reloadActionClicks();
+        })
+        .fail((err) => {
+            alert("Es trat ein Fehler auf 4", "red white-text");
+        })
+        .always(() => {
+            finCount++;
+            reloadActionClicks("S");
+        });
+    
+
+}
+    
+function reloadActionClicks(type) {
+    $("tbody a").off();
+
+    $("#devices" + type + " a[data-type=info]").click((ele, b, c) => {
         var data = JSON.parse(decodeURI($(ele.target).parent().parent().attr("data-json")));
 
         $("#modal_info .modal-content h4 span").html(data.name);
@@ -186,7 +200,7 @@ function reloadActionClicks() {
         instance.open();
     });
 
-    $("a[data-type=rename]").click((ele, b, c) => {
+    $("#devices" + type + " a[data-type=rename]").click((ele, b, c) => {
         var data = JSON.parse(decodeURI($(ele.target).parent().parent().attr("data-json")));
         var newName = encodeURI(prompt("Bitte gib den neuen Namen ein:", data.name));
         if (newName == "null")
@@ -196,7 +210,7 @@ function reloadActionClicks() {
             return;
         }
         var topele = $(ele.target).parent().parent();
-        $("td[data-type=name]", topele).html(encodeURI(newName));
+        $("#devices" + type + " td[data-type=name]", topele).html(encodeURI(newName));
     });
 }
 
@@ -207,8 +221,6 @@ var actionButtons = "<a data-type='rename' class='btn-flat'>Umbenennen</a>" +
 function addLightOrGroup(item, type = "L") {
     var check = item.supports.text == "Nicht unterstützt" ? "disabled" : "checked";
     var classx = item.supports.text == "Nicht unterstützt" ? "notsupported" : "";
-    console.log("x",item);
-    console.log(encodeURI(JSON.stringify(item)));
     $("#devices" + type + " tbody").append("<tr id='" + item.id + "' data-json='" + encodeURI(JSON.stringify(item)) + "' class='" + classx + "'><td><label class='input-field'><input type='checkbox' " + check + " /><span class='black-text' data-type='name'>" + item.name + "</span></label></td><td>" + actionButtons + "</td><td>" + item.supports.text + "</td></tr>");
 }
 
@@ -226,11 +238,16 @@ function getSupports(item, type) {
     switch (type) {
         case "L":
             if (item.hascolor) {
-                if (item.state.colormode == "ct")
+                if (item.state.hasOwnProperty("hue"))
+                    supports.push("color");
+                else
+                    supports.push("empty");
+                if (item.state.hasOwnProperty("ct"))
                     supports.push("temp");
                 else
-                    supports.push("color");
+                    supports.push("empty");
             } else {
+                supports.push("empty");
                 supports.push("empty");
             }
 
