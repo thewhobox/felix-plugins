@@ -39,7 +39,7 @@ var dpts = {
         5: {
             default: { type: "number", role: "number" },
             0: { name: "Keinen Sub angeben", func: "number" },
-            1: { name: "5.001 Prozent (0..100%)", func: "position", type: "state.position", assign: { min: 0, max: 100 } },
+            1: { name: "5.001 Prozent (0..100%)", func: "position", role: "state.position", assign: { min: 0, max: 100 } },
             3: { name: "5.003 Winkel (Grad)", func: "angle", assign: { min: 0, max: 360 } },
             4: { name: "5.004 Prozent (0..255%)", func: "percent", assign: { min: 0, max: 255 } },
             5: { name: "5.005 Dezimalfaktor (0..255)", func: "factor", assign: { min: 0, max: 255 } },
